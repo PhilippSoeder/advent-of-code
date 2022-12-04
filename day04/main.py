@@ -8,9 +8,7 @@ def a() -> int:
     result = 0
     for line in input:
         unionset = set(line[0]).union(set(line[1]))
-        if unionset == set(line[0]):
-            result += 1
-        elif unionset == set(line[1]):
+        if (unionset == set(line[0])) or (unionset == set(line[1])):
             result += 1
     return result
 
