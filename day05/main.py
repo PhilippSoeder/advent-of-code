@@ -35,30 +35,6 @@ def part2() -> int:
     return result
 
 
-def get_number_of_crates():
-    for i, line in enumerate(input):
-        for char in line:
-            if char == ['[']:
-                break
-            elif char == '1':
-                print(line)
-                for c in line:
-                    if c != ' ':
-                        number_crates = c
-                return [int(number_crates), i]
-
-
-def get_stacks_of_crates(n, m):
-    stack = {}
-    for l, line in enumerate(input):
-        if l < m:
-            for i in range(0, n*3+n-1, 4):
-                if line[i] == '[':
-                    print(line[i])
-                    print(i)
-    return 0
-
-
 if __name__ == '__main__':
     AOC_YEAR = 2022
     AOC_DAY = 5
