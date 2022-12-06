@@ -5,11 +5,11 @@ import aocd
 
 
 def get_start_of_message(start_bits: int) -> int:
-    sop = [str(i) for i in range(start_bits)]
+    som = ['' for _ in range(start_bits)]
     for index, char in enumerate(input):
-        sop[index % start_bits] = char
+        som[index % start_bits] = char
         if index >= start_bits-1:
-            if len(set(sop)) == start_bits:
+            if len(set(som)) == start_bits:
                 return index + 1
 
 
