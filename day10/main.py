@@ -12,14 +12,14 @@ def determine_signal(c, r):
 
 
 def change_crt(c, r):
-    sprite = shift_sprite(r)
+    sprite = create_sprite(r)
     column = (c - 1) % 40
     row = int((c - 1) / 40)
     if sprite[column] == '#':
         crt[row][column] = '#'
 
 
-def shift_sprite(r):
+def create_sprite(r):
     sprite = ['.' for _ in range(40)]
     if r > 0:
         sprite[r-1] = '#'
