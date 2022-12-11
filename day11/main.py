@@ -16,11 +16,7 @@ def simulate_rounds(rounds, part1):
             items = list(map(int, items))
             monkey['items'] = items
         elif line.startswith(STR_OPERATION):
-            line = line[len(STR_OPERATION):]
-            operation = line.split()
-            for i, element in enumerate(operation):
-                if element.isdigit():
-                    operation[i] = int(element)
+            operation = eval('lambda old:' + line.split('=')[1])
             monkey['operation'] = operation
         elif line.startswith(STR_TEST):
             test = line[len(STR_TEST):]
@@ -43,7 +39,7 @@ def simulate_rounds(rounds, part1):
     for _ in range(1, rounds + 1):
         for m, monkey in enumerate(monkeys):
             for i, item in enumerate(monkey['items']):
-                monkey['items'][i] = inspect_item(item, monkey['operation'])
+                monkey['items'][i] = monkey['operation'](item)
                 monkeys[m]['inspections'] += 1
                 if part1:
                     monkey['items'][i] = int(monkey['items'][i] / 3)
@@ -61,18 +57,6 @@ def simulate_rounds(rounds, part1):
         most_active.sort()
         most_active = most_active[1:]
     return most_active[0] * most_active[1]
-
-
-def inspect_item(item, operation):
-    if operation[1] == 'old':
-        n = item
-    else:
-        n = operation[1]
-    match operation[0]:
-        case '+':
-            return item + n
-        case '*':
-            return item * n
 
 
 if __name__ == '__main__':
