@@ -42,7 +42,6 @@ def simulate_rounds(rounds, part1):
 
     for _ in range(1, rounds + 1):
         for m, monkey in enumerate(monkeys):
-            items_to_remove = []
             for i, item in enumerate(monkey['items']):
                 monkey['items'][i] = inspect_item(item, monkey['operation'])
                 monkeys[m]['inspections'] += 1
@@ -53,18 +52,14 @@ def simulate_rounds(rounds, part1):
                     monkeys[monkey['true']]['items'].append(monkey['items'][i])
                 else:
                     monkeys[monkey['false']]['items'].append(monkey['items'][i])
-                items_to_remove.append(i)
-            new_items = []
-            for i, item in enumerate(monkeys[m]['items']):
-                if i not in items_to_remove:
-                    new_items.append(item)
-            monkeys[m]['items'] = new_items
+            monkeys[m]['items'] = []
 
     most_active = [0, 0]
 
     for monkey in monkeys:
-        if monkey['inspections'] > min(most_active):
-            most_active = [max(most_active), monkey['inspections']]
+        most_active.append(monkey['inspections'])
+        most_active.sort()
+        most_active = most_active[1:]
     return most_active[0] * most_active[1]
 
 
