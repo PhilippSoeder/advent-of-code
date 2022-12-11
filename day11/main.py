@@ -38,7 +38,7 @@ def simulate_rounds(rounds, part1):
     for monkey in monkeys:
         multipied_divisor *= monkey['test']
 
-    for _ in range(1, rounds + 1):
+    for _ in range(rounds):
         for m, monkey in enumerate(monkeys):
             for i, item in enumerate(monkey['items']):
                 monkey['items'][i] = monkey['operation'](item)
