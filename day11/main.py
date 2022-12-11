@@ -24,9 +24,9 @@ def simulate_rounds(rounds, part1):
 
     inspections = [0 for _ in range(len(monkeys))]
 
-    multipied_divisor = 1
+    multiplied_divisor = 1
     for monkey in monkeys:
-        multipied_divisor *= monkey['test']
+        multiplied_divisor *= monkey['test']
 
     for _ in range(rounds):
         for m, monkey in enumerate(monkeys):
@@ -35,7 +35,7 @@ def simulate_rounds(rounds, part1):
                 inspections[m] += 1
                 if part1:
                     monkey['items'][i] = int(monkey['items'][i] / 3)
-                monkey['items'][i] = monkey['items'][i] % multipied_divisor
+                monkey['items'][i] = monkey['items'][i] % multiplied_divisor
                 if monkey['items'][i] % monkey['test'] == 0:
                     monkeys[monkey['true']]['items'].append(monkey['items'][i])
                 else:
