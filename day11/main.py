@@ -11,25 +11,15 @@ def simulate_rounds(rounds, part1):
         if line.startswith(STR_MONKEY):
             monkey = {}
         elif line.startswith(STR_STARTING_ITEMS):
-            line = line[len(STR_STARTING_ITEMS):]
-            items = line.split(', ')
-            items = list(map(int, items))
-            monkey['items'] = items
+            monkey['items'] = list(map(int, line.split(':')[1].split(',')))
         elif line.startswith(STR_OPERATION):
-            operation = eval('lambda old:' + line.split('=')[1])
-            monkey['operation'] = operation
+            monkey['operation'] = eval('lambda old:' + line.split('=')[1])
         elif line.startswith(STR_TEST):
-            test = line[len(STR_TEST):]
-            test = int(test)
-            monkey['test'] = test
+            monkey['test'] = int(line.split()[-1])
         elif line.startswith(STR_TEST_TRUE):
-            true = line[len(STR_TEST_TRUE):]
-            true = int(true)
-            monkey['true'] = true
+            monkey['true'] = int(line.split()[-1])
         elif line.startswith(STR_TEST_FALSE):
-            false = line[len(STR_TEST_FALSE):]
-            false = int(false)
-            monkey['false'] = false
+            monkey['false'] = int(line.split()[-1])
             monkeys.append(monkey)
 
     inspections = [0 for _ in range(len(monkeys))]
@@ -63,11 +53,11 @@ if __name__ == '__main__':
     input = aocd.get_data(year=AOC_YEAR, day=AOC_DAY).splitlines()
 
     STR_MONKEY = 'Monkey'
-    STR_STARTING_ITEMS = 'Starting items:'
-    STR_OPERATION = 'Operation: new = old'
-    STR_TEST = 'Test: divisible by'
-    STR_TEST_TRUE = 'If true: throw to monkey'
-    STR_TEST_FALSE = 'If false: throw to monkey'
+    STR_STARTING_ITEMS = 'Starting items'
+    STR_OPERATION = 'Operation'
+    STR_TEST = 'Test'
+    STR_TEST_TRUE = 'If true'
+    STR_TEST_FALSE = 'If false'
 
     a = simulate_rounds(20, part1=True)
     print(f'{a = }')
