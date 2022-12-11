@@ -7,9 +7,9 @@ import aocd
 def simulate_rounds(rounds, part1):
     monkeys = []
     for line in input:
+        line = line.strip()
         if line.startswith(STR_MONKEY):
             monkey = {}
-            monkey['inspections'] = 0
         elif line.startswith(STR_STARTING_ITEMS):
             line = line[len(STR_STARTING_ITEMS):]
             items = line.split(', ')
@@ -62,12 +62,12 @@ if __name__ == '__main__':
     input = open("input.txt").read().splitlines()
     input = aocd.get_data(year=AOC_YEAR, day=AOC_DAY).splitlines()
 
-    STR_MONKEY = 'Monkey '
-    STR_STARTING_ITEMS = '  Starting items: '
-    STR_OPERATION = '  Operation: new = old '
-    STR_TEST = '  Test: divisible by '
-    STR_TEST_TRUE = '    If true: throw to monkey '
-    STR_TEST_FALSE = '    If false: throw to monkey '
+    STR_MONKEY = 'Monkey'
+    STR_STARTING_ITEMS = 'Starting items:'
+    STR_OPERATION = 'Operation: new = old'
+    STR_TEST = 'Test: divisible by'
+    STR_TEST_TRUE = 'If true: throw to monkey'
+    STR_TEST_FALSE = 'If false: throw to monkey'
 
     a = simulate_rounds(20, part1=True)
     print(f'{a = }')
