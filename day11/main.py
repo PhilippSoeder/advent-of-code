@@ -32,6 +32,8 @@ def simulate_rounds(rounds, part1):
             monkey['false'] = false
             monkeys.append(monkey)
 
+    inspections = [0 for _ in range(len(monkeys))]
+
     multipied_divisor = 1
     for monkey in monkeys:
         multipied_divisor *= monkey['test']
@@ -40,7 +42,7 @@ def simulate_rounds(rounds, part1):
         for m, monkey in enumerate(monkeys):
             for i, item in enumerate(monkey['items']):
                 monkey['items'][i] = monkey['operation'](item)
-                monkeys[m]['inspections'] += 1
+                inspections[m] += 1
                 if part1:
                     monkey['items'][i] = int(monkey['items'][i] / 3)
                 monkey['items'][i] = monkey['items'][i] % multipied_divisor
@@ -50,13 +52,8 @@ def simulate_rounds(rounds, part1):
                     monkeys[monkey['false']]['items'].append(monkey['items'][i])
             monkeys[m]['items'] = []
 
-    most_active = [0, 0]
-
-    for monkey in monkeys:
-        most_active.append(monkey['inspections'])
-        most_active.sort()
-        most_active = most_active[1:]
-    return most_active[0] * most_active[1]
+    inspections.sort()
+    return inspections[-1] * inspections[-2]
 
 
 if __name__ == '__main__':
