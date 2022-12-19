@@ -20,15 +20,15 @@ def sim(ore_ore_c, cla_ore_c, obs_ore_c, obs_cla_c, geo_ore_c, geo_obs_c, t):
             continue
 
         # reducing possible states
-        max_or_c = max([ore_ore_c, cla_ore_c, obs_ore_c, geo_ore_c])
-        if ore_r >= max_or_c:
-            ore_r = max_or_c
+        max_ore_c = max([ore_ore_c, cla_ore_c, obs_ore_c, geo_ore_c])
+        if ore_r >= max_ore_c:
+            ore_r = max_ore_c
         if cla_r >= obs_cla_c:
             cla_r = obs_cla_c
         if obs_r >= geo_obs_c:
             obs_r = geo_obs_c
-        if ore >= max_or_c * t - ore_r * (t - 1):
-            ore = max_or_c * t - ore_r * (t - 1)
+        if ore >= max_ore_c * t - ore_r * (t - 1):
+            ore = max_ore_c * t - ore_r * (t - 1)
         if cla >= obs_cla_c * t - cla_r * (t - 1):
             cla = obs_cla_c * t - cla_r * (t - 1)
         if obs >= geo_obs_c * t - obs_r * (t - 1):
