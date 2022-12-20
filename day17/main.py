@@ -138,13 +138,13 @@ if __name__ == '__main__':
                     del chamber[0]
                 else:
                     offset += 1
-        if i == NUMBER_OF_ROCKS_TO_STOP_1-1:
+        i += 1
+        if i == NUMBER_OF_ROCKS_TO_STOP_1:
             a = len(chamber)
             print(f'{a = }')
-        if i == NUMBER_OF_ROCKS_TO_STOP_2-1:
+        if i == NUMBER_OF_ROCKS_TO_STOP_2:
             b = len(chamber)
             print(f'{b = }')
-        i += 1
 
     aocd.submit(answer=a, part='a', year=AOC_YEAR, day=AOC_DAY)
     aocd.submit(answer=b, part='b', year=AOC_YEAR, day=AOC_DAY)
