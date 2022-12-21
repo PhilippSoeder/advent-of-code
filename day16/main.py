@@ -1,6 +1,7 @@
 '''
 Advent of Code 2022 - Day 16
 '''
+import sys
 import aocd
 from collections import deque
 
@@ -20,23 +21,37 @@ if __name__ == '__main__':
         valve = words[1]
         flow_rate = int(words[4].split('=')[1][:-1])
         pipe['flow_rate'] = flow_rate
-        to_valves = [x[:2] for x in words[9:]]
-        pipe['to_valves'] = to_valves
+        direct_connections = [x[:2] for x in words[9:]]
+        pipe['direct_connections'] = direct_connections
         pipes[valve] = pipe
 
-    ''' 
-    TODO:   optimize input by removing valves with 0 flow
-            and add cost to travel to all other valves to
-            that valve.
-            Only a small number of valves have flow > 0.
-            Leave 'AA' in the list, since it it the start.
-    '''
+    non_zero_flow = [x for x in pipes if pipes[x]['flow_rate'] > 0]
+
+    for valve in pipes:
+        pipes[valve]['connections'] = dict()
+        for x in non_zero_flow:
+            if x == valve:
+                continue
+            pipes[valve]['connections'][x] = sys.maxsize
+            queue = deque([[valve, 0]])
+            visited = set()
+            while len(queue) > 0:
+                item, distance = queue.popleft()
+                if item in visited:
+                    continue
+                visited.add(item)
+                for v in pipes[item]['direct_connections']:
+                    if v == x:
+                        best = min(distance+1, pipes[valve]['connections'][x])
+                        pipes[valve]['connections'][x] = best
+                    else:
+                        queue.append([v, distance+1])
 
     states_seen = set()
     state = ('AA', (), 0, 30)
     queue = deque([state])
     while len(queue) > 0:
-        state = queue.pop()
+        state = queue.popleft()
         cp, ov, flow, t = state
         a = max(a, flow)
         if t <= 0:
@@ -45,8 +60,8 @@ if __name__ == '__main__':
             continue
         states_seen.add(state)
 
-        for d in pipes[cp]['to_valves']:
-            state = (d, ov, flow, t-1)
+        for item in pipes[cp]['connections']:
+            state = (item, ov, flow, t-pipes[cp]['connections'][item])
             queue.append(state)
 
         if pipes[cp]['flow_rate'] > 0:
