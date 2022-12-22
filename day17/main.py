@@ -5,12 +5,14 @@ import aocd
 import copy
 
 
-def print_chamber():
-    for line in chamber:
-        print('|', end=' ')
-        for char in line:
-            print(char, end=' ')
-        print('|')
+def get_highest_stopped(chamber):
+    highest_stopped = [len(chamber) for _ in range(CHAMBER_WIDTH)]
+    for c in range(CHAMBER_WIDTH):
+        for r, _ in enumerate(chamber):
+            if chamber[r][c] == '#':
+                highest_stopped[c] = r
+                break
+    return tuple(highest_stopped)
 
 
 if __name__ == '__main__':
@@ -72,6 +74,7 @@ if __name__ == '__main__':
     rocks = 0
     iterator_pushes = 0
     result = 0
+    states_seen = {}
     while i <= NUMBER_OF_ROCKS_TO_STOP_2:
         offset = 0
         height_new_rock = len(rock_types[rocks]) - 3
@@ -139,11 +142,20 @@ if __name__ == '__main__':
                 else:
                     offset += 1
         i += 1
+        state = (rocks, iterator_pushes, get_highest_stopped(chamber))
+        if state in states_seen:
+            si, slc = states_seen[state]
+            k = NUMBER_OF_ROCKS_TO_STOP_2 - i
+            q = k // (i - si)
+            o = q * (len(chamber) - slc)
+            i += q * (i - si)
+            states_seen = {}
+        states_seen[state] = (i, len(chamber))
         if i == NUMBER_OF_ROCKS_TO_STOP_1:
             a = len(chamber)
             print(f'{a = }')
         if i == NUMBER_OF_ROCKS_TO_STOP_2:
-            b = len(chamber)
+            b = len(chamber) + o
             print(f'{b = }')
 
     aocd.submit(answer=a, part='a', year=AOC_YEAR, day=AOC_DAY)
