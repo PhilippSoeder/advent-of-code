@@ -9,7 +9,7 @@ if __name__ == '__main__':
     AOC_DAY = 1
     input = open("input.txt").read().splitlines()
     input = aocd.get_data(year=AOC_YEAR, day=AOC_DAY).splitlines()
-    words = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+    words = "one two three four five six seven eight nine".split(" ")
 
     part_a = 0
     part_b = 0
@@ -18,7 +18,7 @@ if __name__ == '__main__':
         digits_in_line = [x for x in line if x.isdigit()]
         part_a += int(str(digits_in_line[0]) + str(digits_in_line[-1]))
         for cnt, nbr in enumerate(words):
-            line = line.replace(nbr, nbr + str(cnt+1) + nbr[-1])
+            line = line.replace(nbr, nbr + str(cnt+1) + nbr)
         digits_in_line = [x for x in line if x.isdigit()]
         part_b += int(str(digits_in_line[0]) + str(digits_in_line[-1]))
 
