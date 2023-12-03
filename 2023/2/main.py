@@ -7,7 +7,8 @@ import aocd
 if __name__ == '__main__':
     AOC_YEAR = 2023
     AOC_DAY = 2
-    input = open("input.txt").read().splitlines()
+    example = f"{AOC_YEAR}/{AOC_DAY}/input.txt"
+    input = open(example).read().splitlines()
     input = aocd.get_data(year=AOC_YEAR, day=AOC_DAY).splitlines()
     part_a = 0
     part_b = 0
