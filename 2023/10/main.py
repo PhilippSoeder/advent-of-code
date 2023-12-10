@@ -8,8 +8,7 @@ def find_start(grid):
     for r, row in enumerate(grid):
         for c, pipe in enumerate(row):
             if pipe == "S":
-                position = (r, c)
-    return position
+                return (r, c)
 
 
 def find_next(g, c, p):
@@ -66,7 +65,7 @@ def remove_non_path(grid, path):
 
 def create_bigger_grid(grid):
     bigger_grid = []
-    for r, row in enumerate(grid):
+    for row in grid:
         row_new1 = []
         row_new2 = []
         for c, pipe in enumerate(row):
