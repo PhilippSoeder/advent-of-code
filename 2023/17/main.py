@@ -3,6 +3,7 @@ Advent of Code 2023 - Day 17
 '''
 import aocd
 from heapq import heappush, heappop
+import plotly.express as px
 
 
 def find_shortest_path(grid, part):
@@ -60,3 +61,7 @@ if __name__ == '__main__':
 
     aocd.submit(answer=part_a, part='a', year=AOC_YEAR, day=AOC_DAY)
     aocd.submit(answer=part_b, part='b', year=AOC_YEAR, day=AOC_DAY)
+
+    # not needed for solution, but nice visualization ;)
+    heatmap = px.imshow(grid)
+    heatmap.show()
