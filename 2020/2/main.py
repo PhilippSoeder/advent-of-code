@@ -6,7 +6,8 @@ import aocd
 
 AOC_YEAR = 2020
 AOC_DAY = 2
-input = open("input.txt").read().splitlines()
+example = f"{AOC_YEAR}/{AOC_DAY}/input.txt"
+input = open(example).read().splitlines()
 input = aocd.get_data(year=AOC_YEAR, day=AOC_DAY).splitlines()
 part_a = 0
 part_b = 0
@@ -30,5 +31,6 @@ for line in input:
 
 print(f'{part_a = }')
 print(f'{part_b = }')
+
 aocd.submit(answer=part_a, part='a', year=AOC_YEAR, day=AOC_DAY)
 aocd.submit(answer=part_b, part='b', year=AOC_YEAR, day=AOC_DAY)
