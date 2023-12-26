@@ -26,14 +26,16 @@ def simulate_fish(n):
 
 AOC_YEAR = 2021
 AOC_DAY = 6
-input = open("input.txt").read()
+example = f"{AOC_YEAR}/{AOC_DAY}/input.txt"
+input = open(example).read()
 input = aocd.get_data(year=AOC_YEAR, day=AOC_DAY)
+
 fishs = [int(x) for x in input.split(',')]
 
 part1 = simulate_fish(80)
-print(f'{part1 = }')
-
 part2 = simulate_fish(256)
+
+print(f'{part1 = }')
 print(f'{part2 = }')
 
 aocd.submit(answer=part1, part='a', year=AOC_YEAR, day=AOC_DAY)

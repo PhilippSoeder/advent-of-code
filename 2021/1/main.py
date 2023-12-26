@@ -34,7 +34,8 @@ def part_2(input):
 
 AOC_YEAR = 2021
 AOC_DAY = 1
-input = open("input.txt").read().splitlines()
+example = f"{AOC_YEAR}/{AOC_DAY}/input.txt"
+input = open(example).read().splitlines()
 input = aocd.get_data(year=AOC_YEAR, day=AOC_DAY).splitlines()
 input = list(map(int, input))
 

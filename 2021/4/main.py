@@ -30,7 +30,8 @@ def calculate_result(board, numbers):
 
 AOC_YEAR = 2021
 AOC_DAY = 4
-input = open("input.txt").read().split('\n\n')
+example = f"{AOC_YEAR}/{AOC_DAY}/input.txt"
+input = open(example).read().split('\n\n')
 input = aocd.get_data(year=AOC_YEAR, day=AOC_DAY).split('\n\n')
 numbers = list(map(int, input[0].split(',')))
 boards = []

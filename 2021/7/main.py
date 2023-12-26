@@ -7,8 +7,10 @@ import sys
 
 AOC_YEAR = 2021
 AOC_DAY = 7
-input = open("input.txt").read()
+example = f"{AOC_YEAR}/{AOC_DAY}/input.txt"
+input = open(example).read()
 input = aocd.get_data(year=AOC_YEAR, day=AOC_DAY)
+
 submarines = list(map(int, input.split(',')))
 min_s = min(submarines)
 max_s = max(submarines)

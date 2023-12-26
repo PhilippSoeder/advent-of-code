@@ -64,13 +64,14 @@ def run(part):
 
 AOC_YEAR = 2021
 AOC_DAY = 5
-input = open("input.txt").read().replace(' -> ', ',').splitlines()
+example = f"{AOC_YEAR}/{AOC_DAY}/input.txt"
+input = open(example).read().replace(' -> ', ',').splitlines()
 input = aocd.get_data(year=AOC_YEAR, day=AOC_DAY).replace(' -> ', ',').splitlines()
 
 part1 = run(part='a')
-print(f'{part1 = }')
-
 part2 = run(part='b')
+
+print(f'{part1 = }')
 print(f'{part2 = }')
 
 aocd.submit(answer=part1, part='a', year=AOC_YEAR, day=AOC_DAY)

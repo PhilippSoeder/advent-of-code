@@ -60,7 +60,8 @@ def binary_to_decimal(binary):
 
 AOC_YEAR = 2021
 AOC_DAY = 3
-input = open("input.txt").read().splitlines()
+example = f"{AOC_YEAR}/{AOC_DAY}/input.txt"
+input = open(example).read().splitlines()
 input = aocd.get_data(year=AOC_YEAR, day=AOC_DAY).splitlines()
 numbers = []
 for line in input:
@@ -68,11 +69,13 @@ for line in input:
 
 gr, er = get_gamma_and_epsilon_rate(numbers)
 part1 = binary_to_decimal(gr) * binary_to_decimal(er)
-print(f'{part1 = }')
-aocd.submit(answer=part1, part='a', year=AOC_YEAR, day=AOC_DAY)
 
 ogr = get_oxygen_generator_rating(numbers)
 CO2sr = get_CO2_scrubber_rating(numbers)
 part2 = binary_to_decimal(ogr) * binary_to_decimal(CO2sr)
+
+print(f'{part1 = }')
 print(f'{part2 = }')
+
+aocd.submit(answer=part1, part='a', year=AOC_YEAR, day=AOC_DAY)
 aocd.submit(answer=part2, part='b', year=AOC_YEAR, day=AOC_DAY)
