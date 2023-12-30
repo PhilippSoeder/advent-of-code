@@ -33,7 +33,8 @@ def calculate_result(monkey, part2):
 if __name__ == '__main__':
     AOC_YEAR = 2022
     AOC_DAY = 21
-    input = open("input.txt").read().splitlines()
+    example = f"{AOC_YEAR}/{AOC_DAY}/input.txt"
+    input = open(example).read().splitlines()
     input = aocd.get_data(year=AOC_YEAR, day=AOC_DAY).splitlines()
     part1 = 0
     part2 = 0
@@ -60,5 +61,6 @@ if __name__ == '__main__':
 
     print(f'{part1 = }')
     print(f'{part2 = }')
+
     aocd.submit(answer=part1, part='a', year=AOC_YEAR, day=AOC_DAY)
     aocd.submit(answer=part2, part='b', year=AOC_YEAR, day=AOC_DAY)

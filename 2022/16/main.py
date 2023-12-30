@@ -9,7 +9,8 @@ from collections import deque
 if __name__ == '__main__':
     AOC_YEAR = 2022
     AOC_DAY = 16
-    input = open("input.txt").read().splitlines()
+    example = f"{AOC_YEAR}/{AOC_DAY}/input.txt"
+    input = open(example).read().splitlines()
     input = aocd.get_data(year=AOC_YEAR, day=AOC_DAY).splitlines()
     a = 0
     b = 0

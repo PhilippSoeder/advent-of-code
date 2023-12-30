@@ -58,9 +58,10 @@ def run(search_bound, part_a):
 if __name__ == '__main__':
     AOC_YEAR = 2022
     AOC_DAY = 15
-    input = open("input.txt").read().splitlines()
     target_line_a = 10
     search_bound_b = 20
+    example = f"{AOC_YEAR}/{AOC_DAY}/input.txt"
+    input = open(example).read().splitlines()
     input = aocd.get_data(year=AOC_YEAR, day=AOC_DAY).splitlines()
     target_line_a = 2000000
     search_bound_b = 4000000
@@ -80,8 +81,9 @@ if __name__ == '__main__':
         ds.append(d)
 
     a = run(target_line_a, part_a=True)
-    print(f'{a = }')
     b = run(search_bound_b, part_a=False)
+
+    print(f'{a = }')
     print(f'{b = }')
 
     aocd.submit(answer=a, part='a', year=AOC_YEAR, day=AOC_DAY)

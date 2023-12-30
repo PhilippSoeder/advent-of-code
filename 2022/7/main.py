@@ -98,15 +98,16 @@ def part2() -> int:
 if __name__ == '__main__':
     AOC_YEAR = 2022
     AOC_DAY = 7
-    input = open("input.txt").read().splitlines()
+    example = f"{AOC_YEAR}/{AOC_DAY}/input.txt"
+    input = open(example).read().splitlines()
     input = aocd.get_data(year=AOC_YEAR, day=AOC_DAY).splitlines()
 
     fs = {}
 
     a = part1()
-    print(f'{a = }')
-
     b = part2()
+
+    print(f'{a = }')
     print(f'{b = }')
 
     aocd.submit(answer=a, part='a', year=AOC_YEAR, day=AOC_DAY)

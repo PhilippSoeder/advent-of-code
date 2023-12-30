@@ -16,14 +16,15 @@ def get_start_of_message(start_bits: int) -> int:
 if __name__ == '__main__':
     AOC_YEAR = 2022
     AOC_DAY = 6
-
-    input = open("input.txt").read()
+    example = f"{AOC_YEAR}/{AOC_DAY}/input.txt"
+    input = open(example).read()
     input = aocd.get_data(year=AOC_YEAR, day=AOC_DAY)
 
     a = get_start_of_message(4)
-    print(f'{a = }')
-    aocd.submit(answer=a, part='a', year=AOC_YEAR, day=AOC_DAY)
-
     b = get_start_of_message(14)
+
+    print(f'{a = }')
     print(f'{b = }')
+
     aocd.submit(answer=b, part='b', year=AOC_YEAR, day=AOC_DAY)
+    aocd.submit(answer=a, part='a', year=AOC_YEAR, day=AOC_DAY)

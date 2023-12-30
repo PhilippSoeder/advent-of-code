@@ -18,7 +18,8 @@ def get_highest_stopped(chamber):
 if __name__ == '__main__':
     AOC_YEAR = 2022
     AOC_DAY = 17
-    input = open("input.txt").read()
+    example = f"{AOC_YEAR}/{AOC_DAY}/input.txt"
+    input = open(example).read()
     input = aocd.get_data(year=AOC_YEAR, day=AOC_DAY)
     direction_push = [x for x in input]
 

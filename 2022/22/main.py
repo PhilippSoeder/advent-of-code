@@ -136,7 +136,8 @@ def solve(part):
 if __name__ == '__main__':
     AOC_YEAR = 2022
     AOC_DAY = 22
-    input = open("input.txt").read()
+    example = f"{AOC_YEAR}/{AOC_DAY}/input.txt"
+    input = open(example).read()
     input = aocd.get_data(year=AOC_YEAR, day=AOC_DAY)
 
     part1 = solve(part='a')

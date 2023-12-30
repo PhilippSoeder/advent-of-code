@@ -49,7 +49,8 @@ def simulate_rounds(rounds, part1):
 if __name__ == '__main__':
     AOC_YEAR = 2022
     AOC_DAY = 11
-    input = open("input.txt").read().splitlines()
+    example = f"{AOC_YEAR}/{AOC_DAY}/input.txt"
+    input = open(example).read().splitlines()
     input = aocd.get_data(year=AOC_YEAR, day=AOC_DAY).splitlines()
 
     STR_MONKEY = 'Monkey'
@@ -60,9 +61,9 @@ if __name__ == '__main__':
     STR_TEST_FALSE = 'If false'
 
     a = simulate_rounds(20, part1=True)
-    print(f'{a = }')
-
     b = simulate_rounds(10000, part1=False)
+
+    print(f'{a = }')
     print(f'{b = }')
 
     aocd.submit(answer=a, part='a', year=AOC_YEAR, day=AOC_DAY)

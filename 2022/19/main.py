@@ -120,10 +120,12 @@ def sim(ore_ore_c, cla_ore_c, obs_ore_c, obs_cla_c, geo_ore_c, geo_obs_c, t):
 if __name__ == '__main__':
     AOC_YEAR = 2022
     AOC_DAY = 19
-    input = open("input.txt").read().splitlines()
+    example = f"{AOC_YEAR}/{AOC_DAY}/input.txt"
+    input = open(example).read().splitlines()
     input = aocd.get_data(year=AOC_YEAR, day=AOC_DAY).splitlines()
     part1 = 0
     part2 = 1
+
     for line in input:
         id, a, b, c, d, e, f = map(int, re.findall("\\d+", line))
         p1 = sim(a, b, c, d, e, f, 24)
@@ -131,7 +133,9 @@ if __name__ == '__main__':
         if id <= 3:
             p2 = sim(a, b, c, d, e, f, 32)
             part2 *= p2
+
     print(f'{part1 = }')
     print(f'{part2 = }')
+
     aocd.submit(answer=part1, part='a', year=AOC_YEAR, day=AOC_DAY)
     aocd.submit(answer=part2, part='b', year=AOC_YEAR, day=AOC_DAY)

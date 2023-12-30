@@ -59,13 +59,14 @@ if __name__ == '__main__':
     AOC_YEAR = 2022
     AOC_DAY = 13
 
-    input = open("input.txt").read()
+    example = f"{AOC_YEAR}/{AOC_DAY}/input.txt"
+    input = open(example).read()
     input = aocd.get_data(year=AOC_YEAR, day=AOC_DAY)
 
     a = part1(input)
-    print(f'{a = }')
-
     b = part2(input)
+
+    print(f'{a = }')
     print(f'{b = }')
 
     aocd.submit(answer=a, part='a', year=AOC_YEAR, day=AOC_DAY)

@@ -45,7 +45,8 @@ def sign(x):
 if __name__ == '__main__':
     AOC_YEAR = 2022
     AOC_DAY = 9
-    input = open("input.txt").read().splitlines()
+    example = f"{AOC_YEAR}/{AOC_DAY}/input.txt"
+    input = open(example).read().splitlines()
     input = aocd.get_data(year=AOC_YEAR, day=AOC_DAY).splitlines()
 
     instructions = []
@@ -54,9 +55,9 @@ if __name__ == '__main__':
         instructions.append([direction, int(amount)])
 
     a = run(1)
-    print(f'{a = }')
-
     b = run(9)
+
+    print(f'{a = }')
     print(f'{b = }')
 
     aocd.submit(answer=a, part='a', year=AOC_YEAR, day=AOC_DAY)
